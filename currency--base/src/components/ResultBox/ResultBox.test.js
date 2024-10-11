@@ -17,35 +17,35 @@ import ResultBox from './ResultBox';
         for(const testObj of testCases){
             render(<ResultBox from={testObj.from} to={testObj.to} amount={testObj.amount} />);
             const output = screen.getByTestId('main-div');
-            expect(output).toHaveTextContent('PLN '+testObj.amount+'.00 = '+testObj.expectedOutput);
+            expect(output).toHaveTextContent(testObj.amount+',00 zł = '+testObj.expectedOutput);
             cleanup();
         }
     });
     it('should render proper info about conversion when USD -> PLN', () => {
         const testCases = [
-            { amount: 100, from: 'USD', to: 'PLN', expectedOutput: 'PLN 350.00' },
-            { amount: 20, from: 'USD', to: 'PLN', expectedOutput: 'PLN 70.00' },
-            { amount: 200, from: 'USD', to: 'PLN', expectedOutput: 'PLN 700.00' },
-            { amount: 345, from: 'USD', to: 'PLN', expectedOutput: 'PLN 1,207.50' },
+            { amount: 100, from: 'USD', to: 'PLN', expectedOutput: '350,00' },
+            { amount: 20, from: 'USD', to: 'PLN', expectedOutput: '70,00' },
+            { amount: 200, from: 'USD', to: 'PLN', expectedOutput: '700,00' },
+            { amount: 345, from: 'USD', to: 'PLN', expectedOutput: '1207,50' },
         ];
         for(const testObj of testCases){
             render(<ResultBox from={testObj.from} to={testObj.to} amount={testObj.amount} />);
             const output = screen.getByTestId('main-div');
-            expect(output).toHaveTextContent('$'+testObj.amount+'.00 = '+testObj.expectedOutput);
+            expect(output).toHaveTextContent('$'+testObj.amount+'.00 = '+testObj.expectedOutput+' zł');
             cleanup();
         }
     });
     it('should render proper info about conversion when PLN -> PLN', () => {
         const testCases = [
-            { amount: 100, from: 'PLN', to: 'PLN', expectedOutput: 'PLN 100.00' },
-            { amount: 20, from: 'PLN', to: 'PLN', expectedOutput: 'PLN 20.00' },
-            { amount: 200, from: 'PLN', to: 'PLN', expectedOutput: 'PLN 200.00' },
-            { amount: 345, from: 'PLN', to: 'PLN', expectedOutput: 'PLN 345.00' },
+            { amount: 100, from: 'PLN', to: 'PLN', expectedOutput: '100,00 zł' },
+            { amount: 20, from: 'PLN', to: 'PLN', expectedOutput: '20,00 zł' },
+            { amount: 200, from: 'PLN', to: 'PLN', expectedOutput: '200,00 zł' },
+            { amount: 345, from: 'PLN', to: 'PLN', expectedOutput: '345,00 zł' },
         ];
         for(const testObj of testCases){
             render(<ResultBox from={testObj.from} to={testObj.to} amount={testObj.amount} />);
             const output = screen.getByTestId('main-div');
-            expect(output).toHaveTextContent('PLN '+testObj.amount+'.00 = '+testObj.expectedOutput);
+            expect(output).toHaveTextContent(testObj.amount+',00 zł = '+testObj.expectedOutput);
             cleanup();
         }
     });
@@ -73,7 +73,7 @@ import ResultBox from './ResultBox';
         for(const testObj of testCases){
             render(<ResultBox from={testObj.from} to={testObj.to} amount={testObj.amount} />);
             const output = screen.getByTestId('main-div');
-            expect(output).toHaveTextContent('- PLN '+testObj.amount+'.00 = '+testObj.expectedOutput);
+            expect(output).toHaveTextContent(testObj.amount+',00 zł = '+testObj.expectedOutput);
             cleanup();
         }
     });

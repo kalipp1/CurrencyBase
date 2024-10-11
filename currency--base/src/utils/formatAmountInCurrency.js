@@ -1,6 +1,6 @@
 export const formatAmountInCurrency = (amount, currency) => {
 
-  const formatter = new Intl.NumberFormat('en-US', {
+  const formatter = new Intl.NumberFormat(currency==='PLN'?'pl-PL':"en-US", {
     style: 'currency',
     currency,
   });

@@ -27,11 +27,12 @@ describe('Component CurrencyForm', () => {
     const fromField = screen.getByTestId('from-select');
     const toField = screen.getByTestId('to-select');
 
-    userEvent.click(submitButton);
-
     // expect(action).toHaveBeenCalledWith({ amount: 100, from: 'PLN', to: 'USD' });
+    let i = 1;
     for(const testObj of testCases) {
-        userEvent.type(amountField, testObj.amount);
+      userEvent.clear(amountField);
+      userEvent.type(amountField, testObj.amount)
+        // userEvent.type(amountField, testObj.amount);
         userEvent.selectOptions(fromField, testObj.from);
         userEvent.selectOptions(toField, testObj.to);
 
@@ -39,8 +40,8 @@ describe('Component CurrencyForm', () => {
         userEvent.click(submitButton);
 
         expect(action).toHaveBeenCalledWith({ amount: testObj.amount, from: testObj.from, to: testObj.to });
-        expect(action).toHaveBeenCalledTimes(1);
-        cleanup();
+        expect(action).toHaveBeenCalledTimes(i);
+        i++;
       }
   });
 });
